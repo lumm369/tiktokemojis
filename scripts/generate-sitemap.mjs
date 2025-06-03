@@ -1,6 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 import { SitemapStream, streamToPromise } from 'sitemap';
+import { Readable } from 'stream';
 import { fileURLToPath } from 'url';
 
 // 获取当前文件的目录路径
@@ -24,8 +25,9 @@ const categories = [
 
 async function generateSitemap() {
   try {
-    // 基本页面（除了首页）
+    // 基本页面
     const pages = [
+      { url: '/', changefreq: 'weekly', priority: 1.0 },
       { url: '/about', changefreq: 'monthly', priority: 0.7 },
       { url: '/terms', changefreq: 'monthly', priority: 0.5 },
       { url: '/privacy', changefreq: 'monthly', priority: 0.5 },
@@ -48,29 +50,13 @@ async function generateSitemap() {
 
     // 创建站点地图流
     const stream = new SitemapStream({ hostname: siteUrl });
-    
-    // 手动处理首页
-    stream.write({ url: '', changefreq: 'weekly', priority: 1.0 });
-    
-    // 添加其他页面
-    pages.forEach(page => {
-      stream.write(page);
-    });
-    
-    // 结束流
-    stream.end();
-    
-    const data = await streamToPromise(stream);
+    const data = await streamToPromise(
+      Readable.from(pages).pipe(stream)
+    );
 
     // 将站点地图写入文件
     fs.writeFileSync(path.join(path.resolve(__dirname, '..'), 'public', 'sitemap.xml'), data.toString());
-    
-    // 读取生成的文件并修复首页 URL（确保没有尾部斜杠）
-    let sitemapContent = fs.readFileSync(path.join(path.resolve(__dirname, '..'), 'public', 'sitemap.xml'), 'utf8');
-    sitemapContent = sitemapContent.replace(`<loc>${siteUrl}/</loc>`, `<loc>${siteUrl}</loc>`);
-    fs.writeFileSync(path.join(path.resolve(__dirname, '..'), 'public', 'sitemap.xml'), sitemapContent);
-    
-    console.log('站点地图生成成功，包含类别页面！首页 URL 不带尾部斜杠');
+    console.log('站点地图生成成功，包含类别页面！');
   } catch (error) {
     console.error('生成站点地图时发生错误:', error);
   }

@@ -36,7 +36,7 @@ export const metadata: Metadata = {
   },
   metadataBase: new URL('https://tiktokemojis.cc'),
   alternates: {
-    canonical: '',
+    canonical: '/',
   }
 };
 
