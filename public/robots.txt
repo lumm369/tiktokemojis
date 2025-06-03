@@ -1,0 +1,9 @@
+# TikTok Emojis Website Robots.txt
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://tiktokemojis.cc/sitemap.xml
+
+# Crawl-delay
+Crawl-delay: 10 
