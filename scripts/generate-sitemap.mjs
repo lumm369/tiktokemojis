@@ -23,6 +23,24 @@ const categories = [
   { id: 'other', name: 'Other' }
 ];
 
+// 读取全部表情符号
+const loadAllEmojis = () => {
+  try {
+    const filePath = path.join(path.resolve(__dirname, '..'), 'src/data/emojis.ts');
+    const fileContent = fs.readFileSync(filePath, 'utf8');
+    
+    // 使用正则表达式提取所有表情符号数据
+    const emojiMatches = fileContent.matchAll(/id:\s*'([^']+)'/g);
+    
+    // 转换为数组
+    const emojiIds = Array.from(emojiMatches).map(match => match[1]);
+    return emojiIds;
+  } catch (error) {
+    console.error('加载全部表情符号失败:', error);
+    return [];
+  }
+};
+
 async function generateSitemap() {
   try {
     // 基本页面
@@ -48,6 +66,18 @@ async function generateSitemap() {
       });
     });
 
+    // 加载所有表情符号ID
+    const allEmojiIds = loadAllEmojis();
+    
+    // 添加所有表情符号详情页面
+    allEmojiIds.forEach(emojiId => {
+      pages.push({
+        url: `/emojis/${emojiId}-tiktok-emoji/`,
+        changefreq: 'weekly',
+        priority: 0.7
+      });
+    });
+
     // 创建站点地图流
     const stream = new SitemapStream({ hostname: siteUrl });
     const data = await streamToPromise(
@@ -56,7 +86,7 @@ async function generateSitemap() {
 
     // 将站点地图写入文件
     fs.writeFileSync(path.join(path.resolve(__dirname, '..'), 'public', 'sitemap.xml'), data.toString());
-    console.log('站点地图生成成功，包含类别页面！');
+    console.log(`站点地图生成成功，包含类别页面和${allEmojiIds.length}个表情符号详情页面！`);
   } catch (error) {
     console.error('生成站点地图时发生错误:', error);
   }
