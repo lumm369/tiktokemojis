@@ -6,6 +6,7 @@ import { useState } from 'react';
 import { Menu, Download, Code, BookOpen, Heart } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
+import { usePathname } from 'next/navigation';
 
 const navigation = [
   { name: 'Home', href: '/', icon: Heart },
@@ -17,6 +18,13 @@ const navigation = [
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
+  const pathname = usePathname();
+
+  const isActive = (path: string) => {
+    if (path === '/' && pathname === '/') return true;
+    if (path !== '/' && pathname.startsWith(path)) return true;
+    return false;
+  };
 
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-white/90 backdrop-blur-md dark:bg-black/90 dark:border-gray-800">
@@ -42,7 +50,11 @@ export default function Header() {
               <Link
                 key={item.name}
                 href={item.href}
-                className="text-sm font-medium text-gray-700 hover:text-[#FE2C55] transition-colors dark:text-gray-200 dark:hover:text-[#25F4EE]"
+                className={`text-sm font-medium transition-colors dark:hover:text-[#25F4EE] ${
+                  isActive(item.href)
+                    ? 'text-[#FE2C55] dark:text-[#25F4EE]'
+                    : 'text-gray-700 hover:text-[#FE2C55] dark:text-gray-200'
+                }`}
               >
                 {item.name}
               </Link>
@@ -75,7 +87,11 @@ export default function Header() {
                     <Link
                       key={item.name}
                       href={item.href}
-                      className="flex items-center space-x-3 text-lg font-medium text-gray-700 hover:text-[#FE2C55] transition-colors dark:text-gray-200 dark:hover:text-[#25F4EE]"
+                      className={`flex items-center space-x-3 text-lg font-medium transition-colors ${
+                        isActive(item.href)
+                          ? 'text-[#FE2C55] dark:text-[#25F4EE]'
+                          : 'text-gray-700 hover:text-[#FE2C55] dark:text-gray-200 dark:hover:text-[#25F4EE]'
+                      }`}
                       onClick={() => setIsOpen(false)}
                     >
                       <Icon className="h-5 w-5" />

@@ -143,7 +143,7 @@ export default function TikTokEmojisDownloadPage() {
               <Card>
                 <CardHeader>
                   <CardTitle className="flex items-center space-x-2">
-                    <Image className="h-6 w-6 text-primary" />
+                    <Image className="h-6 w-6 text-primary" aria-label="High Quality PNG Icon" />
                     <span>High Quality PNG</span>
                   </CardTitle>
                 </CardHeader>

@@ -1,9 +1,11 @@
-# TikTok Emojis Website Robots.txt
+# *
 User-agent: *
 Allow: /
+Disallow: /private
+Disallow: /admin
 
-# Sitemap
+# Host
+Host: https://tiktokemojis.cc
+
+# Sitemaps
 Sitemap: https://tiktokemojis.cc/sitemap.xml
-
-# Crawl-delay
-Crawl-delay: 10 

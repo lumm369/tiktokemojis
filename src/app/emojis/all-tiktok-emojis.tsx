@@ -5,12 +5,10 @@ import { Search, Eye } from 'lucide-react';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { Alert, AlertDescription } from '@/components/ui/alert';
-import { Badge } from '@/components/ui/badge';
 import Header from '@/components/Header';
 import EmojiCard from '@/components/EmojiCard';
 import Footer from '@/components/Footer';
-import { tikTokEmojis, getEmojisByCategory, getHiddenEmojis, getStandardEmojis, categories } from '@/data/emojis';
-import Link from 'next/link';
+import { tikTokEmojis, getHiddenEmojis, getStandardEmojis, categories } from '@/data/emojis';
 import Image from 'next/image';
 
 export default function AllTikTokEmojisPage() {
