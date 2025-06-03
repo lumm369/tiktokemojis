@@ -2,6 +2,7 @@
 module.exports = {
   siteUrl: process.env.SITE_URL || 'https://tiktokemojis.cc',
   generateRobotsTxt: true,
+  trailingSlash: true,
   robotsTxtOptions: {
     additionalSitemaps: [
       'https://tiktokemojis.cc/sitemap.xml',

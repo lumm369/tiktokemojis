@@ -28,21 +28,21 @@ async function generateSitemap() {
     // 基本页面
     const pages = [
       { url: '/', changefreq: 'weekly', priority: 1.0 },
-      { url: '/about', changefreq: 'monthly', priority: 0.7 },
-      { url: '/terms', changefreq: 'monthly', priority: 0.5 },
-      { url: '/privacy', changefreq: 'monthly', priority: 0.5 },
-      { url: '/contact', changefreq: 'monthly', priority: 0.7 },
-      { url: '/all-tiktok-emojis', changefreq: 'weekly', priority: 0.9 },
-      { url: '/emojis', changefreq: 'weekly', priority: 0.8 },
-      { url: '/tiktok-emoji-codes', changefreq: 'weekly', priority: 0.8 },
-      { url: '/tiktok-emojis-download', changefreq: 'weekly', priority: 0.8 },
-      { url: '/how-to-use-tiktok-emojis', changefreq: 'weekly', priority: 0.8 },
+      { url: '/about/', changefreq: 'monthly', priority: 0.7 },
+      { url: '/terms/', changefreq: 'monthly', priority: 0.5 },
+      { url: '/privacy/', changefreq: 'monthly', priority: 0.5 },
+      { url: '/contact/', changefreq: 'monthly', priority: 0.7 },
+      { url: '/all-tiktok-emojis/', changefreq: 'weekly', priority: 0.9 },
+      { url: '/emojis/', changefreq: 'weekly', priority: 0.8 },
+      { url: '/tiktok-emoji-codes/', changefreq: 'weekly', priority: 0.8 },
+      { url: '/tiktok-emojis-download/', changefreq: 'weekly', priority: 0.8 },
+      { url: '/how-to-use-tiktok-emojis/', changefreq: 'weekly', priority: 0.8 },
     ];
 
     // 添加类别页面
     categories.forEach(category => {
       pages.push({
-        url: `/emojis/category/${category.id}-tiktok-emoji`,
+        url: `/emojis/category/${category.id}-tiktok-emoji/`,
         changefreq: 'weekly',
         priority: 0.8
       });
