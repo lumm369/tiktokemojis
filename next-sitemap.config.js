@@ -1,6 +1,6 @@
 /** @type {import('next-sitemap').IConfig} */
 module.exports = {
-  siteUrl: process.env.SITE_URL || 'https://tiktokemojis.cc',
+  siteUrl: process.env.SITE_URL || 'https://tiktokemojis.cc/',
   generateRobotsTxt: true,
   trailingSlash: true,
   robotsTxtOptions: {

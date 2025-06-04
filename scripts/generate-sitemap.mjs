@@ -9,7 +9,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 // 站点基本URL
-const siteUrl = 'https://tiktokemojis.cc';
+const siteUrl = 'https://tiktokemojis.cc/';
 
 // 类别列表（与src/data/emojis.ts中的保持一致）
 const categories = [
@@ -29,11 +29,23 @@ const loadAllEmojis = () => {
     const filePath = path.join(path.resolve(__dirname, '..'), 'src/data/emojis.ts');
     const fileContent = fs.readFileSync(filePath, 'utf8');
     
-    // 使用正则表达式提取所有表情符号数据
-    const emojiMatches = fileContent.matchAll(/id:\s*'([^']+)'/g);
+    // 更精确的正则表达式，只匹配tikTokEmojis数组中的emoji
+    // 查找 tikTokEmojis 数组的开始和结束位置
+    const tikTokEmojisStart = fileContent.indexOf('export const tikTokEmojis');
+    const tikTokEmojisEnd = fileContent.indexOf('];', tikTokEmojisStart);
     
-    // 转换为数组
-    const emojiIds = Array.from(emojiMatches).map(match => match[1]);
+    if (tikTokEmojisStart === -1 || tikTokEmojisEnd === -1) {
+      console.error('无法找到tikTokEmojis数组');
+      return [];
+    }
+    
+    // 只在tikTokEmojis数组范围内查找ID
+    const tikTokEmojisContent = fileContent.substring(tikTokEmojisStart, tikTokEmojisEnd);
+    const emojiMatches = tikTokEmojisContent.matchAll(/id:\s*'([^']+)'/g);
+    
+    // 转换为数组并去重
+    const emojiIds = [...new Set(Array.from(emojiMatches).map(match => match[1]))];
+    console.log(`提取到${emojiIds.length}个不重复的emoji ID`);
     return emojiIds;
   } catch (error) {
     console.error('加载全部表情符号失败:', error);

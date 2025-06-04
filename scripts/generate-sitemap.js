@@ -9,7 +9,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 // 站点基本URL
-const siteUrl = 'https://tiktokemojis.cc';
+const siteUrl = 'https://tiktokemojis.cc/';
 
 // 类别列表（与src/data/emojis.ts中的保持一致）
 const categories = [

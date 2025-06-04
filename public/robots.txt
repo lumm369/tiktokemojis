@@ -5,7 +5,7 @@ Disallow: /private
 Disallow: /admin
 
 # Host
-Host: https://tiktokemojis.cc
+Host: https://tiktokemojis.cc/
 
 # Sitemaps
 Sitemap: https://tiktokemojis.cc/sitemap.xml
