@@ -3,6 +3,9 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   /* config options here */
   trailingSlash: true,
+  images: {
+    unoptimized: true, // 禁用图片优化以避免Vercel的付费限制
+  },
   async rewrites() {
     return [
       // 详情页面URL优化
