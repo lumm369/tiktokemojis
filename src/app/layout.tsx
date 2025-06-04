@@ -6,13 +6,13 @@ import Script from "next/script";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "TikTok Emojis.cc - Copy and Paste & Download Emojis Tool",
-  description: "The ultimate collection of TikTok emojis for your videos. Copy, paste, and download your favorite emojis instantly! Free PNG downloads available.",
-  keywords: "tiktok emojis, emoji copy paste, tiktok emoji codes, emoji png download, proud tiktok emoji",
+  title: "TikTok Emojis - Free Copy, Paste & Download Tool",
+  description: "Ultimate TikTok emojis collection. Copy, paste & download your favorite emojis instantly! Free PNG downloads for content creators.",
+  keywords: "tiktok emojis, emoji copy paste, emoji download, tiktok emoji codes, free emoji png, content creator tools",
   authors: [{ name: "TikTok Emojis" }],
   openGraph: {
-    title: "TikTok Emojis.cc - Copy and Paste & Download Emojis Tool",
-    description: "The ultimate collection of TikTok emojis for your videos. Copy, paste, and download your favorite emojis instantly!",
+    title: "TikTok Emojis - Free Copy, Paste & Download Tool",
+    description: "Ultimate TikTok emojis collection. Copy, paste & download your favorite emojis instantly! Free PNG downloads for content creators.",
     type: "website",
     locale: "en_US",
     siteName: "TikTok Emojis.cc",
@@ -27,8 +27,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "TikTok Emojis.cc - Copy and Paste & Download Emojis Tool",
-    description: "The ultimate collection of TikTok emojis for your videos. Copy, paste, and download your favorite emojis instantly!",
+    title: "TikTok Emojis - Free Copy, Paste & Download Tool",
+    description: "Ultimate TikTok emojis collection. Copy, paste & download your favorite emojis instantly! Free PNG downloads for content creators.",
     images: ['/emojis/allEmojis.png'],
   },
   robots: {

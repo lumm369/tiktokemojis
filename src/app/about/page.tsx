@@ -3,11 +3,6 @@ import Footer from '@/components/Footer';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Heart, Users, Target, Sparkles } from 'lucide-react';
 
-export const metadata = {
-  title: 'About Us - TikTok Emojis',
-  description: 'Learn about TikTok Emojis collection website and our mission to help content creators.',
-};
-
 export default function AboutPage() {
   return (
     <>

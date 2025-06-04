@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "How to Use TikTok Emojis - Complete Guide for Creators",
-  description: "Learn how to use TikTok emojis effectively in your content. Tips, best practices and strategies for using TikTok emojis to boost engagement.",
-  keywords: "how to use tiktok emojis, tiktok emoji guide, tiktok emoji tutorial, tiktok emoji best practices",
+  title: "How to Use TikTok Emojis - Complete Guide",
+  description: "Master TikTok emojis with our complete guide for content creators. Learn proven strategies, best practices, and tips to boost engagement.",
+  keywords: "how to use tiktok emojis, tiktok emoji guide, emoji engagement strategies, content creator tips, boost engagement",
   alternates: {
     canonical: "/how-to-use-tiktok-emojis",
   }
